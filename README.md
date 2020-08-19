@@ -5,6 +5,7 @@
 1. node 12.18.3
 1. `sudo service mongod start`
 1. `.env` configs (please check `.env-template`)
+1. `npm install`
 1. `npm start`
 
 ## Architecture
