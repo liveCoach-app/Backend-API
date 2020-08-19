@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const idValidator = require('mongoose-id-validator')
 
-const annotationSchema = new mongoose.Schema({
+const AnnotationSchema = new mongoose.Schema({
   text: {
     type: String,
     required: true,
@@ -10,9 +11,13 @@ const annotationSchema = new mongoose.Schema({
     ref: 'Session',
     required: true
   },
+  drawings: {
+    type: mongoose.Schema.Types.Object,
+  },
 })
 
+AnnotationSchema.plugin(idValidator)
 
-const Annotation = mongoose.model('Annotation', annotationSchema)
+const Annotation = mongoose.model('Annotation', AnnotationSchema)
 
 module.exports = Annotation

@@ -1,5 +1,12 @@
 # Backend-API
 
+## Requirements && Running
+
+1. node 12.18.3
+1. `sudo service mongod start`
+1. `.env` configs (please check `.env-template`)
+1. `npm start`
+
 ## Architecture
 
 ![Live coaching architecture diagram and flow](https://github.com/liveCoach-app/Backend-API/blob/master/live-coaching-architecture.png)
