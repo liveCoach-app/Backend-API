@@ -1,11 +1,11 @@
 module.exports = function(app) {
-  app.get('/sessions', (req, res) => {
-    req.context.models.Session.find({}, function (err, sessions) {
+  app.get('/sessions/:id', (req, res) => {
+    req.context.models.Session.findOne({ _id: req.params.id}, function (err, session) {
       if (err) {
         return res.send({ errors: [err.toString()] });
       }
 
-      res.send({ data: sessions })
+      res.send({ data: session })
     });
   })
 

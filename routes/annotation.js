@@ -1,13 +1,20 @@
 const mongoose = require('mongoose')
+const url = require('url')
 
 module.exports = function(app) {
   app.get('/annotations', (req, res) => {
-    req.context.models.Annotation.find({}, function (err, annotations) {
+    const { session } = url.parse(req.url, true).query
+
+    if (!session) {
+      res.send({ errors: ['`session` query parameter is required.'] });
+    }
+
+    req.context.models.Annotation.find({ session: mongoose.Types.ObjectId(session) }, function (err, annotation) {
       if (err) {
         return res.send({ errors: [err.toString()] });
       }
 
-      res.send({ data: annotations })
+      res.send({ data: annotation })
     });
   })
 
